@@ -33,6 +33,23 @@ for i in mydates:
     with open("phoenix"+i+".zip", "wb") as code:
         code.write(r.content)
         
+# unzip them
+
+import zipfile,fnmatch,os
+
+rootPath = r"C:\Users\828142\Documents\phoenixData"
+pattern = '*.zip'
+for root, dirs, files in os.walk(rootPath):
+    for filename in fnmatch.filter(files, pattern):
+        try:
+            
+            print(os.path.join(root, filename))
+            zipfile.ZipFile(os.path.join(root, filename)).extractall(os.path.join(root, os.path.splitext(filename)[0]))
+            
+        except:
+            
+            print("EmptyZipFile_NoDataForThatDay")
+        
 # loop unzipped text files to make them pandas data frames
 
 path = r"C:/Users/user/Documents/phoenixData"
