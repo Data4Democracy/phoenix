@@ -11,6 +11,7 @@
 # determine which time period you are interested in like [June-1-2016 to June-5-2016]
 # make a list of dates
 import datetime
+import pandas as pd
 
 start = datetime.datetime.strptime("20160601", "%Y%m%d")
 end = datetime.datetime.strptime("20160605", "%Y%m%d")
@@ -20,7 +21,7 @@ mydates = []
 for date in date_generated:
     mydates.append(date.strftime("%Y%m%d"))
 
-# download all zip files using the list of dates
+# download all zip files using the list of dates. It will work only if you have a directory called phoenixData in your Documents folder
 import requests
 import os
 base_url = 'https://s3.amazonaws.com/oeda/data/current/events.full.'
